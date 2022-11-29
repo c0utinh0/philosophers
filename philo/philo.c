@@ -6,16 +6,11 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:54:34 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/29 14:57:30 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:10:36 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-t_core	*create_core(void)
-{
-	return (NULL);
-}
 
 void	create_list(t_core	**core)
 {
@@ -39,13 +34,40 @@ void	check_args(int argc, char **argv, t_core *core)
 			core->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
 	}
 }
+/*
+// procedimento para inserir no fim
+void inserir_no_fim(No **lista, int num)
+{
+    No *aux, *novo = malloc(sizeof(No));
 
+    if(novo){
+        novo->valor = num;
+        novo->proximo = NULL;
+
+        // é o primeiro?
+        if(*lista == NULL){
+            *lista = novo;
+            novo->anterior = NULL;
+        }
+        else{
+            aux = *lista;
+            while(aux->proximo)
+                aux = aux->proximo;
+            aux->proximo = novo;
+            novo->anterior = aux;
+        }
+    }
+    else
+        printf("Erro ao alocar memoria!\n");
+}
+*/
 int	main(int argc, char *argv[])
 {
 	t_core	*core;
 
-	core = create_core();
-	core = (t_core *)malloc(sizeof(t_core));
+	core = NULL;
+	core = malloc(sizeof(t_core));
+	create_philo_list(core->philo);
 	check_args(argc, argv, core);
 	create_list(&core);
 
