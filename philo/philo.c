@@ -12,14 +12,6 @@
 
 #include "philo.h"
 
-void	create_list(t_core	**core)
-{
-	printf("%d\n", (*core)->number_of_philosophers);
-	printf("%d\n", (*core)->time_to_die);
-	printf("%d\n", (*core)->time_to_eat);
-	printf("%d\n", (*core)->time_to_sleep);
-	printf("%d\n", (*core)->number_of_times_each_philosopher_must_eat);
-}
 
 void	check_args(int argc, char **argv, t_core *core)
 {
@@ -34,40 +26,73 @@ void	check_args(int argc, char **argv, t_core *core)
 			core->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
 	}
 }
-/*
-// procedimento para inserir no fim
-void inserir_no_fim(No **lista, int num)
+
+// procedimento para inserir no início
+void add_philo_list(t_philo **list, int id)
 {
-    No *aux, *novo = malloc(sizeof(No));
+    t_philo *new = malloc(sizeof(t_philo));
 
-    if(novo){
-        novo->valor = num;
-        novo->proximo = NULL;
+    if(new){
+        new->id = id;
+        new->right = *list;
+        new->left = NULL;
+        if(*list)
+            (*list)->left = new;
+        *list = new;
+    }
+    else
+        printf("Memory Allocation Error!\n");
+}
 
-        // é o primeiro?
-        if(*lista == NULL){
-            *lista = novo;
-            novo->anterior = NULL;
+// procedimento para inserir no fim
+/*
+void add_philo_list(t_philo **list, int num)
+{
+    t_philo *aux, *new = malloc(sizeof(t_philo));
+
+    if(new){
+        new->id = num;
+        new->right = NULL;
+
+        if(*list == NULL){
+            *list = new;
+            new->left = NULL;
         }
         else{
-            aux = *lista;
-            while(aux->proximo)
-                aux = aux->proximo;
-            aux->proximo = novo;
-            novo->anterior = aux;
+            aux = *list;
+            while(aux->right)
+                aux = aux->right;
+            aux->right = new;
+            new->left = aux;
         }
     }
     else
-        printf("Erro ao alocar memoria!\n");
+        printf("Memory Allocation Error!\n");
 }
 */
+void	create_list(t_core	**core)
+{
+	int count_philo;
+	t_philo *list;
+
+	count_philo = (*core)->number_of_philosophers;
+	while(count_philo)
+		add_philo_list(&list, count_philo--);
+	(*core)->philo_list = list;
+	printf("%d\n", (*core)->number_of_philosophers);
+	printf("%d\n", (*core)->time_to_die);
+	printf("%d\n", (*core)->time_to_eat);
+	printf("%d\n", (*core)->time_to_sleep);
+	printf("%d\n", (*core)->number_of_times_each_philosopher_must_eat);
+}
+
+
 int	main(int argc, char *argv[])
 {
 	t_core	*core;
 
 	core = NULL;
 	core = malloc(sizeof(t_core));
-	create_philo_list(core->philo);
 	check_args(argc, argv, core);
 	create_list(&core);
 
