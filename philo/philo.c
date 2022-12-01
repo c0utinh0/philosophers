@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:54:34 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/29 20:10:36 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:27:26 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	check_args(int argc, char **argv, t_core *core)
 		core->time_to_sleep = ft_atoi(argv[4]);
 		if(argc == 6)
 			core->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
+		else 
+			core->number_of_times_each_philosopher_must_eat = 0;
 	}
 }
 
@@ -75,15 +77,17 @@ void	create_list(t_core	**core)
 	int count_philo;
 	t_philo *list;
 
+	list = NULL;
 	count_philo = (*core)->number_of_philosophers;
 	while(count_philo)
 		add_philo_list(&list, count_philo--);
 	(*core)->philo_list = list;
-	printf("%d\n", (*core)->number_of_philosophers);
-	printf("%d\n", (*core)->time_to_die);
-	printf("%d\n", (*core)->time_to_eat);
-	printf("%d\n", (*core)->time_to_sleep);
-	printf("%d\n", (*core)->number_of_times_each_philosopher_must_eat);
+
+	printf("Philosophers: %d\n", (*core)->number_of_philosophers);
+	printf("Tempo de Morte: %d\n", (*core)->time_to_die);
+	printf("Tempo de Comer: %d\n", (*core)->time_to_eat);
+	printf("Tempo de Dormir %d\n", (*core)->time_to_sleep);
+	printf("Deve Comer: %d\n", (*core)->number_of_times_each_philosopher_must_eat);
 }
 
 
@@ -91,6 +95,7 @@ int	main(int argc, char *argv[])
 {
 	t_core	*core;
 
+	printf("%d\n", argc);
 	core = NULL;
 	core = malloc(sizeof(t_core));
 	check_args(argc, argv, core);
