@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/01 16:27:37 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/02 16:10:42 by douglas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ typedef struct s_core
 
 void	check_args(int argc, char **argv, t_core *core);
 int	ft_atoi(char	*str);
-void	create_list(t_core **core);
+void	create_philo_list(t_core **core);
 
 #endif
