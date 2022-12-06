@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/06 15:47:24 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:29:10 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void    *thread_func(void  *temp)
 {
 	t_philo *philo = (t_philo *) temp;
 
-	printf("Id: %d\n", philo->id);
+	printf("%lld X Id: %d\n", current_timestamp(), philo->id);
 	return NULL;
 }
 
