@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/06 16:29:10 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:28:17 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ void    *thread_func(void  *temp)
 	return NULL;
 }
 
-void    create_thread(t_core  **core)
+void    create_thread(t_philo  **philos)
 {
-	t_philo	*temp;
+	t_philo	*philo;
 
-	temp = (*core)->philo_list;
-	while(temp != NULL)
+	philo = *philos;
+	while(philo != NULL)
 	{
-		pthread_create(&temp->t_id, NULL, thread_func, (void *)temp);
-		temp = temp->right;
+		pthread_create(&philo->t_id, NULL, thread_func, (void *)philo);
+		philo = philo->right;
 	}
-	temp = (*core)->philo_list;
-	while(temp != NULL)
+	philo = *philos;
+	while(philo != NULL)
 	{
-		pthread_join(temp->t_id, NULL);
-		temp = temp->right;
+		pthread_join(philo->t_id, NULL);
+		philo = philo->right;
 	}
 
 }

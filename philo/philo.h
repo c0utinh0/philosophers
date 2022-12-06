@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/06 16:27:52 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:27:40 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,17 @@ typedef struct s_philo
 	int				fork;
 	struct s_philo	*right;
 	struct s_philo	*left;
-}	t_philo;
-
-typedef struct s_core
-{
 	int	number_of_philosophers;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
 	int	number_of_times_each_philosopher_must_eat;
-	t_philo	*philo_list;
-}	t_core;
+}	t_philo;
 
-void	check_args(int argc, char **argv, t_core *core);
+//void	check_args(int argc, char **argv, t_philo *philos);
 int	ft_atoi(char	*str);
-void	create_philo_list(t_core **core);
-void	create_thread(t_core **core);
+void	create_philos(t_philo **philos, char **argv, int argc);
+void	create_thread(t_philo **philos);
 void    *thread_func(void  *temp);
 long long current_timestamp(void);
 

@@ -6,13 +6,13 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:54:34 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/06 14:34:47 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:28:40 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
+/*
 void	check_args(int argc, char **argv, t_core *core)
 {
 	//TRATAR INPUTS
@@ -28,24 +28,17 @@ void	check_args(int argc, char **argv, t_core *core)
 			core->number_of_times_each_philosopher_must_eat = 0;
 	}
 }
+*/
 
 int	main(int argc, char *argv[])
 {
-	t_core	*core;
+	t_philo	*philos;
 
-	core = NULL;
-	core = malloc(sizeof(t_core));
-	check_args(argc, argv, core);
-	create_philo_list(&core);
-	create_thread(&core);
-
-	printf("============================\n");
-
-	printf("Philosophers: %d\n", (core)->number_of_philosophers);
-	printf("Tempo de Morte: %d\n", (core)->time_to_die);
-	printf("Tempo de Comer: %d\n", (core)->time_to_eat);
-	printf("Tempo de Dormir %d\n", (core)->time_to_sleep);
-	printf("Deve Comer: %d\n", (core)->number_of_times_each_philosopher_must_eat);
+	philos = NULL;
+	philos = malloc(sizeof(t_philo));
+//	check_args(argc, argv, philos);
+	create_philos(&philos, argv, argc);
+	create_thread(&philos);
 
 	return(0);
 }
