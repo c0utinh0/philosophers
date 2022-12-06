@@ -6,7 +6,7 @@
 #    By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:40 by dcoutinh          #+#    #+#              #
-#    Updated: 2022/12/02 16:00:42 by douglas          ###   ########.fr        #
+#    Updated: 2022/12/06 13:55:03 by dcoutinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 SRCS =  philo.c	\
 		utils/lib/ft_atoi.c	\
 		utils/create_list.c	\
+		utils/create_thread.c	\
 
 OBJS = $(SRCS:.c=.o)
 

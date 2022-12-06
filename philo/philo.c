@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:54:34 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/02 16:11:55 by douglas          ###   ########.fr       */
+/*   Updated: 2022/12/06 14:34:47 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ int	main(int argc, char *argv[])
 {
 	t_core	*core;
 
-	printf("%d\n", argc);
 	core = NULL;
 	core = malloc(sizeof(t_core));
 	check_args(argc, argv, core);
 	create_philo_list(&core);
+	create_thread(&core);
+
+	printf("============================\n");
+
 	printf("Philosophers: %d\n", (core)->number_of_philosophers);
 	printf("Tempo de Morte: %d\n", (core)->time_to_die);
 	printf("Tempo de Comer: %d\n", (core)->time_to_eat);

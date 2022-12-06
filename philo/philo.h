@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/02 16:10:42 by douglas          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:20:49 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <pthread.h>
 
 typedef struct s_philo
 {
+	pthread_t		t_id;
 	int				id;
 	int				fork;
 	struct s_philo	*right;
@@ -38,5 +40,7 @@ typedef struct s_core
 void	check_args(int argc, char **argv, t_core *core);
 int	ft_atoi(char	*str);
 void	create_philo_list(t_core **core);
+void	create_thread(t_core **core);
+void    *thread_func(void  *temp);
 
 #endif
