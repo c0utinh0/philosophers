@@ -24,21 +24,20 @@ void	check_args(int argc, char **argv, t_core *core)
 		core->time_to_sleep = ft_atoi(argv[4]);
 		if(argc == 6)
 			core->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
-		else 
+		else
 			core->number_of_times_each_philosopher_must_eat = 0;
 	}
 }
 */
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_philo	*philos;
+	t_philo *philos;
 
 	philos = NULL;
 	philos = malloc(sizeof(t_philo));
-//	check_args(argc, argv, philos);
+	//	check_args(argc, argv, philos);
 	create_philos(&philos, argv, argc);
 	create_thread(&philos);
-
-	return(0);
+	return (0);
 }

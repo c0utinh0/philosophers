@@ -24,6 +24,7 @@ typedef struct s_philo
 	pthread_t		t_id;
 	int				id;
 	int				fork;
+	struct s_philo	*first;
 	struct s_philo	*right;
 	struct s_philo	*left;
 	int	number_of_philosophers;
@@ -37,7 +38,7 @@ typedef struct s_philo
 int	ft_atoi(char	*str);
 void	create_philos(t_philo **philos, char **argv, int argc);
 void	create_thread(t_philo **philos);
-void    *thread_func(void  *temp);
+void    *thread_func(void  *philo);
 long long current_timestamp(void);
 
 #endif
