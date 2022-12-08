@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/08 18:18:27 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:26:04 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,52 +22,6 @@ void is_thinking(int philo)
 {
 	printf("%lld %d is thinking\n", current_timestamp(), philo);
 }
-
-/*
-void *thread_func(void *temp)
-{
-	t_philo *philo = (t_philo *)temp;
-
-	while (1)
-	{
-		if (philo->right == NULL)
-		{
-			if (philo->fork == 0 && philo->first->fork == 0)
-			{
-				pthread_mutex_lock(philo->eating);
-				printf("%lld %d has taken a fork\n", current_timestamp(), philo->id);
-				printf("%lld %d has taken a fork\n", current_timestamp(), philo->id);
-				philo->fork = 1;
-				philo->first->fork = 1;
-				printf("%lld %d is eating\n", current_timestamp(), philo->id);
-				usleep(100 * 1000);
-				philo->fork = 0;
-				philo->first->fork = 0;
-				pthread_mutex_unlock(philo->eating);
-				is_sleep(100, philo->id);
-				is_thinking(philo->id);
-			}
-
-		}
-		else if (philo->fork == 0 && philo->right->fork == 0)
-		{
-			pthread_mutex_lock(philo->eating);
-			printf("%lld %d has taken a fork\n", current_timestamp(), philo->id);
-			printf("%lld %d has taken a fork\n", current_timestamp(), philo->id);
-			philo->fork = 1;
-			philo->right->fork = 1;
-			printf("%lld %d is eating\n", current_timestamp(), philo->id);
-			usleep(100 * 1000);
-			philo->fork = 0;
-			philo->right->fork = 0;
-			pthread_mutex_unlock(philo->eating);
-			is_sleep(100, philo->id);
-			is_thinking(philo->id);
-		}
-	}
-	return NULL;
-}
-*/
 
 void *thread_func(void *temp)
 {

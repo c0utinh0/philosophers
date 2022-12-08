@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/08 18:04:13 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:26:00 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_philo
 {
 	pthread_t		t_id;
 	int				id;
-//	pthread_mutex_t				*eating;
 	pthread_mutex_t				fork;
 	struct s_philo	*first;
 	struct s_philo	*right;
@@ -35,9 +34,7 @@ typedef struct s_philo
 	int	number_of_times_each_philosopher_must_eat;
 }	t_philo;
 
-//void	check_args(int argc, char **argv, t_philo *philos);
 int	ft_atoi(char	*str);
-//void	create_philos(t_philo **philos, char **argv, int argc, pthread_mutex_t	*m_eating);
 void	create_philos(t_philo **philos, char **argv, int argc);
 void	create_thread(t_philo **philos);
 void    *thread_func(void  *philo);
