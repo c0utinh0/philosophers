@@ -6,12 +6,13 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/08 15:30:40 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:15:26 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
+//static void add_philo_list(t_philo **list, int id, char **argv, int argc, pthread_mutex_t	m_eating)
 static void add_philo_list(t_philo **list, int id, char **argv, int argc)
 {
     t_philo *new = malloc(sizeof(t_philo));
@@ -19,6 +20,7 @@ static void add_philo_list(t_philo **list, int id, char **argv, int argc)
     if (new)
     {
         new->id = id;
+		//new->eating = &m_eating;
         if (argc == 5 || argc == 6)
         {
             new->number_of_philosophers = ft_atoi(argv[1]); // Tratar MAX 200 Phili
@@ -53,13 +55,16 @@ static void create_first(t_philo **philos)
     }
 }
 
-void create_philos(t_philo **philos, char **argv, int argc)
+//void	create_philos(t_philo **philos, char **argv, int argc, pthread_mutex_t	*m_eating)
+void	create_philos(t_philo **philos, char **argv, int argc)
 {
     int count_philo;
     t_philo *philo;
 
     philo = NULL;
     count_philo = ft_atoi(argv[1]);
+//	while (count_philo)
+//		add_philo_list(&philo, count_philo--, argv, argc, *m_eating);
     while (count_philo)
         add_philo_list(&philo, count_philo--, argv, argc);
     *philos = philo;
