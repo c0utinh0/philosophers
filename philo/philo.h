@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/09 17:54:17 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:26:47 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <pthread.h>
 #include <sys/time.h>
 
-typedef struct s_monitor
+typedef struct s_simulation
 {
-	pthread_t t_monitor;
+	pthread_t t_simulation;
 	struct s_philo	**philos;
 	int died;
-}	t_monitor;
+}	t_simulation;
 
 typedef struct s_philo
 {
@@ -45,7 +45,8 @@ typedef struct s_philo
 }	t_philo;
 
 int	ft_atoi(char	*str);
-void	create_philos(t_philo **philos, char **argv, int argc, t_monitor *monitor);
+//void	create_philos(t_philo **philos, char **argv, int argc, t_simulation *simulation);
+void	create_philos(t_philo **philos, char **argv, int argc);
 void	threads(t_philo **philos);
 void    *simulation(void  *philo);
 long long current_timestamp(void);

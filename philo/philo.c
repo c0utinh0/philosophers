@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*                                                   utils                         */
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -15,13 +15,14 @@
 int main(int argc, char *argv[])
 {
 	t_philo	*philos;
-	t_monitor *monitor;
+	//t_simulation *simulation;
 
 	philos = NULL;
 	philos = malloc(sizeof(t_philo));
-	monitor = malloc(sizeof(t_monitor));
-	monitor->died = 0;
-	create_philos(&philos, argv, argc, monitor);
+	//simulation = malloc(sizeof(t_simulation));
+	//simulation->died = 0;
+	//create_philos(&philos, argv, argc, simulation);
+	create_philos(&philos, argv, argc);
 	threads(&philos);
 	return (0);
 }
