@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 14:54:34 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/09 17:57:54 by dcoutinh         ###   ########.fr       */
+/*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
+/*   Updated: 2022/12/09 17:38:40 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../../philo.h"
 
-int main(int argc, char *argv[])
+void *monitor(void *temp)
 {
-	t_philo	*philos;
-	t_monitor *monitor;
+	t_monitor *monitor = (t_monitor *)temp;
 
-	philos = NULL;
-	philos = malloc(sizeof(t_philo));
-	monitor = malloc(sizeof(t_monitor));
-	monitor->died = 0;
-	create_philos(&philos, argv, argc, monitor);
-	threads(&philos);
-	return (0);
+	while (1)
+	{
+                        
+	}
+	return NULL;
 }

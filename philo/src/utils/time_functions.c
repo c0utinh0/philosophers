@@ -6,11 +6,11 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:11:21 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/06 16:29:49 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:58:53 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../../philo.h"
 
 long long current_timestamp(void)
 {

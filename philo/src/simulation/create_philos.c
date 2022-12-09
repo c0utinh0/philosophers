@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_philo_list.c                                :+:      :+:    :+:   */
+/*   create_philos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/08 19:26:02 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:00:33 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../../philo.h"
 
-static void add_philo_list(t_philo **list, int id, char **argv, int argc)
+static void add_philo_list(t_philo **list, int id, char **argv, int argc, int *dead)
 {
     t_philo *new = malloc(sizeof(t_philo));
 
     if (new)
     {
         new->id = id;
+        new->times_eat = 0;
+        new->dead = dead;
 		pthread_mutex_init(&new->fork, NULL);
         if (argc == 5 || argc == 6)
         {
@@ -27,9 +29,9 @@ static void add_philo_list(t_philo **list, int id, char **argv, int argc)
             new->time_to_eat = ft_atoi(argv[3]);
             new->time_to_sleep = ft_atoi(argv[4]);
             if (argc == 6)
-                new->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
+                new->times_must_eat = ft_atoi(argv[5]);
             else
-                new->number_of_times_each_philosopher_must_eat = 0;
+                new->times_must_eat = 0;
         }
         new->right = *list;
         new->left = NULL;
@@ -54,7 +56,7 @@ static void create_first(t_philo **philos)
     }
 }
 
-void	create_philos(t_philo **philos, char **argv, int argc)
+void	create_philos(t_philo **philos, char **argv, int argc, t_monitor *monitor)
 {
     int count_philo;
     t_philo *philo;
@@ -62,7 +64,7 @@ void	create_philos(t_philo **philos, char **argv, int argc)
     philo = NULL;
     count_philo = ft_atoi(argv[1]);
     while (count_philo)
-        add_philo_list(&philo, count_philo--, argv, argc);
+        add_philo_list(&philo, count_philo--, argv, argc, &monitor->died);
     *philos = philo;
 	create_first(philos);
 }
