@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/08 19:26:00 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:58:24 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ void	create_philos(t_philo **philos, char **argv, int argc);
 void	create_thread(t_philo **philos);
 void    *thread_func(void  *philo);
 long long current_timestamp(void);
+void is_eating(t_philo *philo);
+void is_thinking(int philo);
+void is_sleeping(int time, int philo);
 
 #endif
