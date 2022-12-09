@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/09 15:58:24 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:26:47 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <stdlib.h>
 # include <pthread.h>
 #include <sys/time.h>
+
+typedef struct s_simulation
+{
+	pthread_t t_simulation;
+	struct s_philo	**philos;
+	int died;
+}	t_simulation;
 
 typedef struct s_philo
 {
@@ -31,13 +38,17 @@ typedef struct s_philo
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
-	int	number_of_times_each_philosopher_must_eat;
+	int	times_must_eat;
+	int	times_eat;
+	long long last_eat;
+	int *died;
 }	t_philo;
 
 int	ft_atoi(char	*str);
+//void	create_philos(t_philo **philos, char **argv, int argc, t_simulation *simulation);
 void	create_philos(t_philo **philos, char **argv, int argc);
-void	create_thread(t_philo **philos);
-void    *thread_func(void  *philo);
+void	threads(t_philo **philos);
+void    *simulation(void  *philo);
 long long current_timestamp(void);
 void is_eating(t_philo *philo);
 void is_thinking(int philo);

@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_functions.c                                   :+:      :+:    :+:   */
+/*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 16:11:21 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/06 16:29:49 by dcoutinh         ###   ########.fr       */
+/*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
+/*   Updated: 2022/12/09 16:43:44 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../../philo.h"
 
-long long current_timestamp(void)
+void *simulation(void *temp)
 {
-	struct timeval time;
-	long long milliseconds;
+	t_philo *philo = (t_philo *)temp;
 
-	gettimeofday(&time, NULL);
-	milliseconds = time.tv_sec * 1000 + time.tv_usec / 1000;
-	return(milliseconds);
+	while (1)
+	{
+		if (philo->right == NULL)
+		{
+			is_eating(philo);
+			is_sleeping(philo->time_to_sleep, philo->id);
+			is_thinking(philo->id);
+		}
+		else
+		{
+			is_eating(philo);
+			is_sleeping(philo->time_to_sleep, philo->id);
+			is_thinking(philo->id);
+		}
+	}
+	return NULL;
 }
