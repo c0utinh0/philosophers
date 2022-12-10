@@ -6,13 +6,12 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 10:09:06 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:13:47 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-// void threads(t_philo **philos)
 void threads(t_simulation **simulation)
 {
 	t_philo *philo;

@@ -14,14 +14,10 @@
 
 int main(int argc, char *argv[])
 {
-	// t_philo	*philos;
 	t_simulation *simulation;
 
-	// philos = NULL;
-	// philos = malloc(sizeof(t_philo));
 	simulation = malloc(sizeof(t_simulation));
 	create_philos(argv, argc, &simulation);
-	// create_philos(&philos, argv, argc);
 	threads(&simulation);
 	return (0);
 }

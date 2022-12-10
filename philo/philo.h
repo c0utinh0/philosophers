@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 10:08:33 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:13:37 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_philo
 
 int ft_atoi(char *str);
 void create_philos(char **argv, int argc, t_simulation **simulation);
-// void create_philos(t_philo **philos, char **argv, int argc);
 void threads(t_simulation **simulation);
 void *thread_simulation(void *philo);
 long long current_timestamp(void);
