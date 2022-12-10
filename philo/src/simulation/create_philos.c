@@ -6,14 +6,13 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/09 18:29:01 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:13:34 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-//static void add_philo_list(t_philo **list, int id, char **argv, int argc, int *dead)
-static void add_philo_list(t_philo **list, int id, char **argv, int argc)
+static void add_philo_list(t_philo **list, int id, char **argv, int argc, int *died)
 {
     t_philo *new = malloc(sizeof(t_philo));
 
@@ -21,8 +20,8 @@ static void add_philo_list(t_philo **list, int id, char **argv, int argc)
     {
         new->id = id;
         new->times_eat = 0;
-        //new->dead = dead;
-		pthread_mutex_init(&new->fork, NULL);
+        new->died = died;
+        pthread_mutex_init(&new->fork, NULL);
         if (argc == 5 || argc == 6)
         {
             new->number_of_philosophers = ft_atoi(argv[1]); // Tratar MAX 200 Phili
@@ -57,18 +56,21 @@ static void create_first(t_philo **philos)
     }
 }
 
-//void	create_philos(t_philo **philos, char **argv, int argc, t_simulation *simulation)
-void	create_philos(t_philo **philos, char **argv, int argc)
+void create_philos(char **argv, int argc, t_simulation **simulation)
 {
     int count_philo;
     t_philo *philo;
+    t_philo *philos;
 
-    philo = NULL;
+    philo = NULL;    
+    philos = NULL;
     count_philo = ft_atoi(argv[1]);
-    // while (count_philo)
-    //     add_philo_list(&philo, count_philo--, argv, argc, &simulation->died);
+    philos = malloc(sizeof(t_philo));
+    (*simulation)->died = 0;
     while (count_philo)
-        add_philo_list(&philo, count_philo--, argv, argc);
-    *philos = philo;
-	create_first(philos);
+        add_philo_list(&philo, count_philo--, argv, argc, &(*simulation)->died);
+    philos = philo;
+    create_first(&philos);
+    (*simulation)->philos = &philos;
+    
 }

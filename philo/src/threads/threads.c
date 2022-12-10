@@ -6,24 +6,24 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/09 18:18:00 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:13:47 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-void threads(t_philo **philos)
+void threads(t_simulation **simulation)
 {
 	t_philo *philo;
 
-	philo = *philos;
+	philo = *(*simulation)->philos;
 	while (philo != NULL)
 	{
-		pthread_create(&philo->t_id, NULL, simulation, (void *)philo);
+		pthread_create(&philo->t_id, NULL, thread_simulation, (void *)philo);
 		philo = philo->right;
 	}
-	philo = *philos;
-	//pthread_create(&philo->t_monitor, NULL, monitor, (void *)philo);
+	philo = *(*simulation)->philos;
+	// pthread_create(&philo->t_monitor, NULL, monitor, (void *)philo);
 	while (philo != NULL)
 	{
 		pthread_join(philo->t_id, NULL);
