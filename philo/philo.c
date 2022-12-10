@@ -14,15 +14,14 @@
 
 int main(int argc, char *argv[])
 {
-	t_philo	*philos;
-	//t_simulation *simulation;
+	// t_philo	*philos;
+	t_simulation *simulation;
 
-	philos = NULL;
-	philos = malloc(sizeof(t_philo));
-	//simulation = malloc(sizeof(t_simulation));
-	//simulation->died = 0;
-	//create_philos(&philos, argv, argc, simulation);
-	create_philos(&philos, argv, argc);
-	threads(&philos);
+	// philos = NULL;
+	// philos = malloc(sizeof(t_philo));
+	simulation = malloc(sizeof(t_simulation));
+	create_philos(argv, argc, &simulation);
+	// create_philos(&philos, argv, argc);
+	threads(&simulation);
 	return (0);
 }
