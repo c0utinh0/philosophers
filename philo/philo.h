@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 10:13:37 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:29:01 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_simulation
 typedef struct s_philo
 {
 	pthread_t t_id;
+	pthread_t t_monitor;
 	int id;
 	pthread_mutex_t fork;
 	struct s_philo *first;
@@ -36,6 +37,7 @@ typedef struct s_philo
 	struct s_philo *left;
 	int number_of_philosophers;
 	int time_to_die;
+	long long time_of_death;
 	int time_to_eat;
 	int time_to_sleep;
 	int times_must_eat;
@@ -47,7 +49,8 @@ typedef struct s_philo
 int ft_atoi(char *str);
 void create_philos(char **argv, int argc, t_simulation **simulation);
 void threads(t_simulation **simulation);
-void *thread_simulation(void *philo);
+void *thread_simulation(void *temp);
+void *thread_monitor(void *temp);
 long long current_timestamp(void);
 void is_eating(t_philo *philo);
 void is_thinking(int philo);

@@ -6,19 +6,41 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 10:08:52 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:36:13 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../philo.h"
+#include "../../philo.h"
 
 // void *thread_monitor(void *temp)
 // {
-// 	t_monitor *monitor = (t_monitor *)temp;
+//     t_simulation *sim = (t_simulation *)temp;
+//     t_philo **list;
+//     t_philo *philos;
 
-// 	while (1)
-// 	{
-
-// 	}
-// 	return NULL;
+//     list = sim->philos;
+//     philos = *list;
+//     while (1)
+//     {
+//         while (philos != NULL)
+//         {
+//             if ((current_timestamp() - philos->last_eat) > philos->time_to_die)
+//                 sim->died = 1;
+//             philos = philos->right;
+//         }
+//         philos = *list;
+//     }
+//     return NULL;
 // }
+
+void *thread_monitor(void *temp)
+{
+    t_philo *philo = (t_philo *)temp;
+
+    while (*(philo)->died == 0)
+    {
+          if ((current_timestamp() - philo->last_eat) > philo->time_to_die)
+            *(philo)->died = 1;
+    }
+    return NULL;
+}

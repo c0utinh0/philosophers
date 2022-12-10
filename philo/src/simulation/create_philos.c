@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 10:13:34 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:20:52 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void create_philos(char **argv, int argc, t_simulation **simulation)
     t_philo *philo;
     t_philo *philos;
 
-    philo = NULL;    
+    philo = NULL;
     philos = NULL;
     count_philo = ft_atoi(argv[1]);
     philos = malloc(sizeof(t_philo));
@@ -72,5 +72,4 @@ void create_philos(char **argv, int argc, t_simulation **simulation)
     philos = philo;
     create_first(&philos);
     (*simulation)->philos = &philos;
-    
 }
