@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 18:22:05 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 20:16:46 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void *thread_simulation(void *temp)
 {
 	t_philo *philo = (t_philo *)temp;
-	//int *died = philo->died;
 
 	while (*(philo)->died == 0)
 	{
@@ -32,6 +31,6 @@ void *thread_simulation(void *temp)
 			is_thinking(philo->id);
 		}
 	}
-	printf("Philosopher %d is died\n", philo->id);
+	printf("%lld %d is died\n", current_timestamp(), philo->id);
 	return NULL;
 }

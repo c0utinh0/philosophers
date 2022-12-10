@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 17:29:01 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 20:02:39 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ typedef struct s_simulation
 typedef struct s_philo
 {
 	pthread_t t_id;
-	pthread_t t_monitor;
-	int id;
+	pthread_t t_monitor;	
 	pthread_mutex_t fork;
 	struct s_philo *first;
 	struct s_philo *right;
 	struct s_philo *left;
+	int *died;
+	int id;	
 	int number_of_philosophers;
 	int time_to_die;
-	long long time_of_death;
 	int time_to_eat;
 	int time_to_sleep;
 	int times_must_eat;
 	int times_eat;
 	long long last_eat;
-	int *died;
+	long long times_of_death;
 } t_philo;
 
 int ft_atoi(char *str);
