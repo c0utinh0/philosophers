@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 19:42:19 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/10 20:43:11 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,12 @@ void threads(t_simulation **simulation)
 		philo = philo->right;
 	}
 	philo = *(*simulation)->philos;
-	while (philo != NULL)
-	{
-		pthread_create(&philo->t_monitor, NULL, thread_monitor, (void *)philo);
-		philo = philo->right;
-	}
-	philo = *(*simulation)->philos;
+	pthread_create(&philo->t_monitor, NULL, thread_monitor, (void *)philo);
 	while (philo != NULL)
 	{
 		pthread_join(philo->t_id, NULL);
 		philo = philo->right;
 	}
 	philo = *(*simulation)->philos;
-	while (philo != NULL)
-	{
-		pthread_join(philo->t_monitor, NULL);
-		philo = philo->right;
-	}
+	pthread_join(philo->t_monitor, NULL);
 }
