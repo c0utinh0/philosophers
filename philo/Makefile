@@ -6,7 +6,7 @@
 #    By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:40 by dcoutinh          #+#    #+#              #
-#    Updated: 2022/12/09 17:16:15 by dcoutinh         ###   ########.fr        #
+#    Updated: 2022/12/12 14:21:32 by dcoutinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -g -o philo
 
 clean: 
