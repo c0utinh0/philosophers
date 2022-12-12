@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 17:20:52 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:37:23 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void add_philo_list(t_philo **list, int id, char **argv, int argc, int *d
     {
         new->id = id;
         new->times_eat = 0;
+        new->last_eat = current_timestamp();
         new->died = died;
         pthread_mutex_init(&new->fork, NULL);
         if (argc == 5 || argc == 6)

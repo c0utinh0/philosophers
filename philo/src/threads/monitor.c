@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/12 14:23:28 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:33:42 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void *thread_monitor(void *temp)
     {
         if ((current_timestamp() - philo->last_eat) > philo->time_to_die)
         {
+			printf("%lld\n", current_timestamp() - philo->last_eat);
             *(philo)->died = 1;
         }
     }
