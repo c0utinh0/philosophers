@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 20:16:46 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:20:20 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,22 @@ void *thread_simulation(void *temp)
 	{
 		if (philo->right == NULL)
 		{
-			is_eating(philo);
-			is_sleeping(philo->time_to_sleep, philo->id);
-			is_thinking(philo->id);
+			if(*philo->died == 0)
+				is_eating(philo);
+			if(*philo->died == 0)
+				is_sleeping(philo->time_to_sleep, philo->id);
+			if(*philo->died == 0)
+				is_thinking(philo->id);
 		}
 		else
 		{
-			is_eating(philo);
-			is_sleeping(philo->time_to_sleep, philo->id);
-			is_thinking(philo->id);
+			if(*philo->died == 0)
+				is_eating(philo);
+			if(*philo->died == 0)
+				is_sleeping(philo->time_to_sleep, philo->id);
+			if(*philo->died == 0)
+				is_thinking(philo->id);
 		}
 	}
-	printf("%lld %d is died\n", current_timestamp(), philo->id);
 	return NULL;
 }

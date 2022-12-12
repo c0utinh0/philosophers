@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/10 20:02:39 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:40:57 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ long long current_timestamp(void);
 void is_eating(t_philo *philo);
 void is_thinking(int philo);
 void is_sleeping(int time, int philo);
+void print_action(char *msg, long time, int philo);
 
 #endif

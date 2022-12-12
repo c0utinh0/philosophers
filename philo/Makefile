@@ -6,7 +6,7 @@
 #    By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:40 by dcoutinh          #+#    #+#              #
-#    Updated: 2022/12/09 17:16:15 by dcoutinh         ###   ########.fr        #
+#    Updated: 2022/12/12 16:37:54 by dcoutinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS =  philo.c	\
 		src/simulation/create_philos.c	\
 		src/threads/threads.c	\
 		src/utils/time_functions.c	\
+		src/utils/print_functions.c	\
 		src/actions/eat.c	\
 		src/actions/think.c	\
 		src/actions/sleep.c	\
