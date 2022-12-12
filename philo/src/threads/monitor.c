@@ -6,32 +6,11 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/12 16:19:53 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:15:16 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
-
-// void *thread_monitor(void *temp)
-// {
-//     t_simulation *sim = (t_simulation *)temp;
-//     t_philo **list;
-//     t_philo *philos;
-
-//     list = sim->philos;
-//     philos = *list;
-//     while (1)
-//     {
-//         while (philos != NULL)
-//         {
-//             if ((current_timestamp() - philos->last_eat) > philos->time_to_die)
-//                 sim->died = 1;
-//             philos = philos->right;
-//         }
-//         philos = *list;
-//     }
-//     return NULL;
-// }
 
 void *thread_monitor(void *temp)
 {

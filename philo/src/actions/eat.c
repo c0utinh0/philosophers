@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:53:14 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/12 16:45:08 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:10:45 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void is_eating(t_philo *philo)
 				if(*philo->died == 0)
 					print_action("is eating", philo->last_eat, philo->id);
 				usleep(philo->time_to_eat * 1000);
+				philo->times_eat++;
 			}
 			pthread_mutex_unlock(&philo->fork);
 			pthread_mutex_unlock(&philo->first->fork);
@@ -46,6 +47,7 @@ void is_eating(t_philo *philo)
 				if(*philo->died == 0)
 					print_action("is eating", philo->last_eat, philo->id);
 				usleep(philo->time_to_eat * 1000);
+				philo->times_eat++;
 			}
 			pthread_mutex_unlock(&philo->fork);
 			pthread_mutex_unlock(&philo->right->fork);
