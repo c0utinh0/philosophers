@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/12 18:53:59 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/13 14:25:22 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ void *thread_simulation(void *temp)
 
 	if (philo->times_must_eat > 0)
 	{
-		while (*(philo)->died == 0 && philo->times_must_eat > philo->times_eat)
+		while (*(philo)->is_died == 0 && philo->times_must_eat > philo->times_eat)
 		{	
-			if(*philo->died == 0)
+			if(*philo->is_died == 0)
 				is_eating(philo);
-			if(*philo->died == 0)
+			if(*philo->is_died == 0)
 				is_sleeping(philo->time_to_sleep, philo->id);
-			if(*philo->died == 0)
+			if(*philo->is_died == 0)
 				is_thinking(philo->id);
 		}
 	}
 	else
 	{
-		while (*(philo)->died == 0)
+		while (*(philo)->is_died == 0)
 		{
-			if(*philo->died == 0)
+			if(*philo->is_died == 0)
 				is_eating(philo);
-			if(*philo->died == 0)
+			if(*philo->is_died == 0)
 				is_sleeping(philo->time_to_sleep, philo->id);
-			if(*philo->died == 0)
+			if(*philo->is_died == 0)
 				is_thinking(philo->id);
 		}
 	}

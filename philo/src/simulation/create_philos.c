@@ -6,13 +6,13 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/12 16:52:41 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/13 14:56:53 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-static void add_philo_list(t_philo **list, int id, char **argv, int argc, int *died)
+static void add_philo_list(t_philo **list, int id, char **argv, int argc, t_simulation *simulation)
 {
     t_philo *new = malloc(sizeof(t_philo));
 
@@ -21,8 +21,10 @@ static void add_philo_list(t_philo **list, int id, char **argv, int argc, int *d
         new->id = id;
         new->times_eat = 0;
         new->last_eat = current_timestamp();
-        new->died = died;
-        pthread_mutex_init(&new->fork, NULL);
+        new->is_died = &(simulation)->is_died;
+        new->is_full = &(simulation)->is_full;
+        pthread_mutex_init(&new->m_fork, NULL);
+        pthread_mutex_init(&new->m_full, NULL);
         if (argc == 5 || argc == 6)
         {
             new->number_of_philosophers = ft_atoi(argv[1]); // Tratar MAX 200 Phili
@@ -67,9 +69,10 @@ void create_philos(char **argv, int argc, t_simulation **simulation)
     philos = NULL;
     count_philo = ft_atoi(argv[1]);
     philos = malloc(sizeof(t_philo));
-    (*simulation)->died = 0;
+    (*simulation)->is_died = 0;
+    (*simulation)->is_full = 0;
     while (count_philo)
-        add_philo_list(&philo, count_philo--, argv, argc, &(*simulation)->died);
+        add_philo_list(&philo, count_philo--, argv, argc, *simulation);
     philos = philo;
     create_first(&philos);
     (*simulation)->philos = &philos;
