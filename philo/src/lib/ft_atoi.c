@@ -6,30 +6,42 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:44:53 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/28 16:44:38 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:48:19 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-int	ft_atoi(char	*str)
+static long int	ft_conversion(char *nptr, int i, long int j)
 {
-	int result = 0;
-	int sign = 1;
-	int digit;
+	char	temp;
 
-	if (*str == '-')
+	temp = *nptr;
+	if ((*nptr == '-') || (*nptr == '+'))
 	{
-		sign = -1;
-		++str;
+		nptr++;
+		i--;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (('0' <= *nptr) && (*nptr <= '9'))
 	{
-		result = result * 10;
-		digit = *str - '0';
-		result = result + (digit * sign);
-		++str;
+		j = 10 * j + (*nptr++ - '0');
 	}
-	return (result);
+	if (temp == '-')
+		return (j * (-1));
+	return (j);
 }
 
+long int	ft_atoi(const char *nptr)
+{
+	size_t		i;
+	long int	j;
+
+	i = ft_strlen((const char *)nptr);
+	j = 0;
+	while ((9 <= *nptr && *nptr <= 15) || (*nptr == ' '))
+	{
+		nptr++;
+		--i;
+	}
+	return (ft_conversion((char *)nptr, i, j));
+}
