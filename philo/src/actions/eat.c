@@ -6,11 +6,29 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:53:14 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 15:50:39 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:08:22 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
+
+static void check_eat(t_philo *philo)
+{
+	if (philo->times_must_eat > 0)
+	{
+		if((philo)->times_eat < philo->times_must_eat)
+			philo->times_eat++;
+		else
+		{
+			pthread_mutex_lock(&philo->m_full);
+			*philo->is_full = *philo->is_full + 1;
+			pthread_mutex_unlock(&philo->m_full);
+		}
+	}
+	else 
+		philo->times_eat++;
+
+}
 
 void is_eating(t_philo *philo)
 {
@@ -27,8 +45,8 @@ void is_eating(t_philo *philo)
 				philo->last_eat = current_timestamp();
 				if(*philo->is_died == 0)
 					print_action("is eating", philo->last_eat, philo->id);
+				check_eat(philo);
 				usleep(philo->time_to_eat * 1000);
-				philo->times_eat++;
 			}
 			pthread_mutex_unlock(&philo->m_fork);
 			pthread_mutex_unlock(&philo->first->m_fork);
@@ -46,8 +64,8 @@ void is_eating(t_philo *philo)
 				philo->last_eat = current_timestamp();
 				if(*philo->is_died == 0)
 					print_action("is eating", philo->last_eat, philo->id);
+				check_eat(philo);
 				usleep(philo->time_to_eat * 1000);
-				philo->times_eat++;
 			}
 			pthread_mutex_unlock(&philo->m_fork);
 			pthread_mutex_unlock(&philo->right->m_fork);
