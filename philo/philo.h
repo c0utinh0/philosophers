@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 17:52:34 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:42:59 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_philo
 	struct s_philo *left;
 	int *is_died;
 	int *is_full;
+	int philo_is_full;
 	int id;
 	int number_of_philosophers;
 	int time_to_die;
@@ -50,8 +51,9 @@ typedef struct s_philo
 } t_philo;
 
 int ft_atoi(char *str);
+long int	ft_atoi_check(const char *nptr);
 int	ft_isdigit(int c);
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s);
 int	check_args(int argc, char **argv);
 void create_philos(char **argv, int argc, t_simulation **simulation);
 void threads(t_simulation **simulation);

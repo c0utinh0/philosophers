@@ -6,26 +6,11 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:37:18 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 17:54:59 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:54:30 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
-
-
-long int	num;
-
-	num = 0;
-	while (--argc != 0)
-	{
-		if (ft_check_arg(argv[argc]))
-			return (1);
-		num = ft_atoi(argv[argc]);
-		if (num > 2147483647)
-			return (1);
-		ft_add_node(p, num);
-	}
-	return (0);
 
 int	ft_check_arg(char	*arg)
 {
@@ -54,28 +39,24 @@ int	ft_check_arg(char	*arg)
 	return (0);
 }
 
-if(argc == 5 || argc == 6)
-	{
-		core->number_of_philosophers = ft_atoi(argv[1]); //Tratar MAX 200 Philos
-		core->time_to_die = ft_atoi(argv[2]);
-		core->time_to_eat = ft_atoi(argv[3]);
-		core->time_to_sleep = ft_atoi(argv[4]);
-		if(argc == 6)
-			core->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
-	}
-
-
 int	check_args(int argc, char **argv)
 {
+	long int	num;
+
+	num = 0;
 	if(argc == 5 || argc == 6)
 	{
-		core->number_of_philosophers = ft_atoi(argv[1]); //Tratar MAX 200 Philos
-		core->time_to_die = ft_atoi(argv[2]);
-		core->time_to_eat = ft_atoi(argv[3]);
-		core->time_to_sleep = ft_atoi(argv[4]);
-		if(argc == 6)
-			core->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
+		while (--argc != 0)
+		{
+			if (ft_check_arg(argv[argc]))
+				return (0);
+			num = ft_atoi_check(argv[argc]);
+			if (num > 2147483647)
+				return (0);
+		}
 	}
-	return(0);
+	if(ft_atoi_check(argv[1]) > 200)
+		return (0);
+	return(1);
 }
 

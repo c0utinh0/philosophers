@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:53:14 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 17:08:22 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:56:32 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void check_eat(t_philo *philo)
 		{
 			pthread_mutex_lock(&philo->m_full);
 			*philo->is_full = *philo->is_full + 1;
+			philo->philo_is_full = 1;
+			printf("%d is full\n", philo->id);
 			pthread_mutex_unlock(&philo->m_full);
 		}
 	}
@@ -45,7 +47,8 @@ void is_eating(t_philo *philo)
 				philo->last_eat = current_timestamp();
 				if(*philo->is_died == 0)
 					print_action("is eating", philo->last_eat, philo->id);
-				check_eat(philo);
+				if(*philo->is_died == 0)
+					check_eat(philo);
 				usleep(philo->time_to_eat * 1000);
 			}
 			pthread_mutex_unlock(&philo->m_fork);
@@ -64,7 +67,8 @@ void is_eating(t_philo *philo)
 				philo->last_eat = current_timestamp();
 				if(*philo->is_died == 0)
 					print_action("is eating", philo->last_eat, philo->id);
-				check_eat(philo);
+				if(*philo->is_died == 0)
+					check_eat(philo);
 				usleep(philo->time_to_eat * 1000);
 			}
 			pthread_mutex_unlock(&philo->m_fork);

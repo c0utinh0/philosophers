@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 14:56:53 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:44:10 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void add_philo_list(t_philo **list, int id, char **argv, int argc, t_simu
         new->last_eat = current_timestamp();
         new->is_died = &(simulation)->is_died;
         new->is_full = &(simulation)->is_full;
+        new->philo_is_full = 0;
         pthread_mutex_init(&new->m_fork, NULL);
         pthread_mutex_init(&new->m_full, NULL);
         if (argc == 5 || argc == 6)
