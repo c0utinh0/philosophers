@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/14 19:42:59 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:57:24 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_philo
 	struct s_philo *left;
 	int *is_died;
 	int *is_full;
+	long long is_born;
 	int philo_is_full;
 	int id;
 	int number_of_philosophers;
@@ -60,9 +61,10 @@ void threads(t_simulation **simulation);
 void *thread_simulation(void *temp);
 void *thread_monitor(void *temp);
 long long current_timestamp(void);
+long long interval_timestamp(long long is_born);
 void is_eating(t_philo *philo);
-void is_thinking(int philo);
-void is_sleeping(int time, int philo);
-void print_action(char *msg, long time, int philo);
+void is_thinking(t_philo *philo);
+void is_sleeping(t_philo *philo);
+void print_action(char *msg, long time, t_philo *philo);
 
 #endif
