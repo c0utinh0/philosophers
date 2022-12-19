@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 17:08:42 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/19 07:59:52 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void *thread_monitor(void *temp)
             *(philo)->is_died = 1;
 			printf("%lld %d is died\n", current_timestamp(), philo->id);
         }
+
+
 		if (philo->right == NULL && *(philo)->is_died == 0)
             philo = philo->first;
         else if (philo->right != NULL && *(philo)->is_died == 0)

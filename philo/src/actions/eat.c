@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:53:14 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/14 19:56:32 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/19 07:58:24 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void check_eat(t_philo *philo)
 	{
 		if((philo)->times_eat < philo->times_must_eat)
 			philo->times_eat++;
-		else
+		if ((philo)->times_eat >= philo->times_must_eat)
 		{
 			pthread_mutex_lock(&philo->m_full);
 			*philo->is_full = *philo->is_full + 1;
