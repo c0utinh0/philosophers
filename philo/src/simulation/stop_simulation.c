@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish_simulation.c                                :+:      :+:    :+:   */
+/*   stop_simulation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:28:06 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 11:50:34 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 12:13:00 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-void	remove_philos(t_simulation **simulation)
+static void	remove_philos(t_simulation **simulation)
 {
 	t_philo	*next;
 	t_philo	*tmp;
@@ -25,4 +25,30 @@ void	remove_philos(t_simulation **simulation)
 		tmp = next;
 	}
 	free((*simulation)->philos_free);
+}
+
+static void	destroy_mutex(t_simulation **simulation)
+{
+	t_philo *philo;
+	t_philo *init;
+
+	philo = *(*simulation)->philos;
+	init = philo;
+	while (philo != NULL)
+	{
+		pthread_mutex_destroy(&philo->m_fork);
+		philo = philo->right;
+	}
+	philo = init;
+	while (philo != NULL)
+	{
+		pthread_mutex_destroy(&philo->m_full);
+		philo = philo->right;
+	}
+}
+
+void stop_simulation(t_simulation **simulation)
+{
+	remove_philos(simulation);
+	destroy_mutex(simulation);
 }
