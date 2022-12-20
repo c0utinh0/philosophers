@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:54:34 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 17:39:07 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:49:09 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 			return(1);
 		create_philos(argv, argc, &simulation);
 		threads(&simulation);
+		free(simulation);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 14:21:10 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:07:53 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ void threads(t_simulation **simulation)
 	}
 	philo = init;
 	pthread_join(philo->t_monitor, NULL);
+	remove_philos(simulation);
 }

@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/19 13:57:24 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:39:57 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_simulation
 {
 	pthread_t t_simulation;
 	struct s_philo **philos;
+	struct s_philo *philos_free;
 	int is_died;
 	int is_full;
 } t_simulation;
@@ -66,5 +67,6 @@ void is_eating(t_philo *philo);
 void is_thinking(t_philo *philo);
 void is_sleeping(t_philo *philo);
 void print_action(char *msg, long time, t_philo *philo);
+void	remove_philos(t_simulation **simulation);
 
 #endif

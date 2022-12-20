@@ -6,14 +6,14 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 09:56:12 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 10:49:42 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
 
-void one_philo_simulation(t_philo *philo)
+static void one_philo_simulation(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->m_fork);
 	if(*philo->is_died == 0)
