@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:55:03 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/19 13:58:45 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 07:47:12 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void is_thinking(t_philo *philo)
 {
-	printf(" %lldms %d %s\n", interval_timestamp(philo->is_born), philo->id, "is thinking");
+	print_action("is thinking", interval_timestamp(philo->is_born), philo);
 }
