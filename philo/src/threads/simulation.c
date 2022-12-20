@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 16:46:48 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:36:19 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	*thread_simulation(void *temp)
 	t_philo	*philo;
 
 	philo = (t_philo *)temp;
+	if (philo->id % 2 == 0)
+		usleep(200);
 	if (philo->nop == 1)
 		one_philo_simulation(philo);
 	else
