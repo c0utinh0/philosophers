@@ -6,29 +6,31 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/19 14:04:21 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:59:31 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-void *thread_monitor(void *temp)
+void	*thread_monitor(void *temp)
 {
-    t_philo *philo = (t_philo *)temp;
+	t_philo	*philo;
 
-    while (philo != NULL && *(philo)->is_died == 0)
-    {
-		if (*(philo)->is_full == philo->number_of_philosophers)
-            *(philo)->is_died = 1;
+	philo = (t_philo *)temp;
+	while (philo != NULL && *(philo)->is_died == 0)
+	{
+		if (*(philo)->is_full == philo->nop)
+			*(philo)->is_died = 1;
 		else if ((current_timestamp() - philo->last_eat) > philo->time_to_die)
-        {
-            *(philo)->is_died = 1;
-			printf(" %lldms %d %s\n", interval_timestamp(philo->is_born), philo->id, "is died");
-        }
+		{
+			*(philo)->is_died = 1;
+			printf(" %lldms %d %s\n", interval_timestamp(philo->is_born),
+				philo->id, "is died");
+		}
 		if (philo->right == NULL && *(philo)->is_died == 0)
-            philo = philo->first;
-        else if (philo->right != NULL && *(philo)->is_died == 0)
-            philo = philo->right;
-    }
-    return NULL;
+			philo = philo->first;
+		else if (philo->right != NULL && *(philo)->is_died == 0)
+			philo = philo->right;
+	}
+	return (NULL);
 }
