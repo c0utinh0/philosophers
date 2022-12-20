@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:37:18 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 08:27:09 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 09:05:48 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_arg(char	*arg)
 	int	i;
 
 	i = 0;
-	if (arg[i] == '-' || arg[i] == '+')
+	if (arg[i] == '-')
 	{
 		i++;
 		while (arg[i] != '\0')

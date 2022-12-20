@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/19 13:15:45 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 09:11:31 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static void add_philo_list(t_philo **list, int id, char **argv, int argc, t_simu
         pthread_mutex_init(&new->m_full, NULL);
         if (argc == 5 || argc == 6)
         {
-            new->number_of_philosophers = ft_atoi(argv[1]); // Tratar MAX 200 Phili
-            new->time_to_die = ft_atoi(argv[2]);
-            new->time_to_eat = ft_atoi(argv[3]);
-            new->time_to_sleep = ft_atoi(argv[4]);
+            new->number_of_philosophers = ft_atoi_check(argv[1]); // Tratar MAX 200 Phili
+            new->time_to_die = ft_atoi_check(argv[2]);
+            new->time_to_eat = ft_atoi_check(argv[3]);
+            new->time_to_sleep = ft_atoi_check(argv[4]);
             if (argc == 6)
-                new->times_must_eat = ft_atoi(argv[5]);
+                new->times_must_eat = ft_atoi_check(argv[5]);
             else
                 new->times_must_eat = 0;
         }
@@ -69,7 +69,7 @@ void create_philos(char **argv, int argc, t_simulation **simulation)
 
     philo = NULL;
     philos = NULL;
-    count_philo = ft_atoi(argv[1]);
+    count_philo = ft_atoi_check(argv[1]);
     philos = malloc(sizeof(t_philo));
     (*simulation)->is_died = 0;
     (*simulation)->is_full = 0;
