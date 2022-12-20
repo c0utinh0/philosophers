@@ -6,7 +6,7 @@
 #    By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:40 by dcoutinh          #+#    #+#              #
-#    Updated: 2022/12/13 17:49:35 by dcoutinh         ###   ########.fr        #
+#    Updated: 2022/12/20 13:58:09 by dcoutinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS =  philo.c	\
 		src/lib/ft_isdigit.c	\
 		src/lib/ft_strlen.c	\
 		src/simulation/create_philos.c	\
+		src/simulation/stop_simulation.c	\
 		src/threads/threads.c	\
 		src/utils/time_functions.c	\
 		src/utils/print_functions.c	\
@@ -35,8 +36,8 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	$(CC) $(CFLAGS) $(SRCS) -g -o philo
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o philo
 
 clean: 
 	rm -f $(OBJS)

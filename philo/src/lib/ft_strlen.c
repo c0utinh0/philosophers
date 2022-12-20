@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:48:44 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/13 17:49:09 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:23:26 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-

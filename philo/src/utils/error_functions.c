@@ -6,18 +6,27 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:37:18 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/14 19:54:30 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:40:50 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-int	ft_check_arg(char	*arg)
+static int	check_limits(char *num)
+{
+	if (ft_atoi_check(num) > 200)
+		return (1);
+	if (ft_atoi_check(num) <= 0)
+		return (1);
+	return (0);
+}
+
+static int	check_arg(char	*arg)
 {
 	int	i;
 
 	i = 0;
-	if (arg[i] == '-' || arg[i] == '+')
+	if (arg[i] == '-')
 	{
 		i++;
 		while (arg[i] != '\0')
@@ -41,22 +50,21 @@ int	ft_check_arg(char	*arg)
 
 int	check_args(int argc, char **argv)
 {
-	long int	num;
+	long	num;
 
 	num = 0;
-	if(argc == 5 || argc == 6)
+	if (argc == 5 || argc == 6)
 	{
+		if (check_limits(argv[1]))
+			return (0);
 		while (--argc != 0)
 		{
-			if (ft_check_arg(argv[argc]))
+			if (check_arg(argv[argc]))
 				return (0);
 			num = ft_atoi_check(argv[argc]);
-			if (num > 2147483647)
+			if (num <= 0 || num > 2147483647)
 				return (0);
 		}
 	}
-	if(ft_atoi_check(argv[1]) > 200)
-		return (0);
-	return(1);
+	return (1);
 }
-

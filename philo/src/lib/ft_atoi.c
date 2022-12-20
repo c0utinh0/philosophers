@@ -6,32 +6,11 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:44:53 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/14 19:17:55 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 09:12:03 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
-
-int	ft_atoi(char	*str)
-{
-	int result = 0;
-	int sign = 1;
-	int digit;
-
-	if (*str == '-')
-	{
-		sign = -1;
-		++str;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10;
-		digit = *str - '0';
-		result = result + (digit * sign);
-		++str;
-	}
-	return (result);
-}
 
 static long int	ft_conversion(char *nptr, int i, long int j)
 {
