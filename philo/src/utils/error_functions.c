@@ -6,19 +6,19 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:37:18 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 09:05:48 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:40:50 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-static int check_limits(char *num)
+static int	check_limits(char *num)
 {
-	if(ft_atoi_check(num) > 200)
+	if (ft_atoi_check(num) > 200)
 		return (1);
-	if(ft_atoi_check(num) <= 0)
+	if (ft_atoi_check(num) <= 0)
 		return (1);
-	return(0);
+	return (0);
 }
 
 static int	check_arg(char	*arg)
@@ -53,10 +53,10 @@ int	check_args(int argc, char **argv)
 	long	num;
 
 	num = 0;
-	if(argc == 5 || argc == 6)
+	if (argc == 5 || argc == 6)
 	{
-		if(check_limits(argv[1]))
-			return(0);
+		if (check_limits(argv[1]))
+			return (0);
 		while (--argc != 0)
 		{
 			if (check_arg(argv[argc]))
@@ -66,6 +66,5 @@ int	check_args(int argc, char **argv)
 				return (0);
 		}
 	}
-		return(1);
+	return (1);
 }
-

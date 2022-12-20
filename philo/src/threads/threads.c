@@ -6,16 +6,16 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:50:22 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 11:58:43 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:38:20 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../philo.h"
 
-void threads(t_simulation **simulation)
+void	threads(t_simulation **simulation)
 {
-	t_philo *philo;
-	t_philo *init;
+	t_philo	*philo;
+	t_philo	*init;
 
 	philo = *(*simulation)->philos;
 	init = philo;

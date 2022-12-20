@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:28:06 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 12:13:00 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:57:26 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	remove_philos(t_simulation **simulation)
 
 static void	destroy_mutex(t_simulation **simulation)
 {
-	t_philo *philo;
-	t_philo *init;
+	t_philo	*philo;
+	t_philo	*init;
 
 	philo = *(*simulation)->philos;
 	init = philo;
@@ -47,7 +47,7 @@ static void	destroy_mutex(t_simulation **simulation)
 	}
 }
 
-void stop_simulation(t_simulation **simulation)
+void	stop_simulation(t_simulation **simulation)
 {
 	remove_philos(simulation);
 	destroy_mutex(simulation);
