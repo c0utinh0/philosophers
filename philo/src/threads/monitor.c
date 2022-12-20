@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/19 07:59:52 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:04:21 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ void *thread_monitor(void *temp)
 		else if ((current_timestamp() - philo->last_eat) > philo->time_to_die)
         {
             *(philo)->is_died = 1;
-			printf("%lld %d is died\n", current_timestamp(), philo->id);
+			printf(" %lldms %d %s\n", interval_timestamp(philo->is_born), philo->id, "is died");
         }
-
-
 		if (philo->right == NULL && *(philo)->is_died == 0)
             philo = philo->first;
         else if (philo->right != NULL && *(philo)->is_died == 0)

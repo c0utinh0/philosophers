@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:53:14 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/19 07:58:24 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:44:34 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void check_eat(t_philo *philo)
 			pthread_mutex_lock(&philo->m_full);
 			*philo->is_full = *philo->is_full + 1;
 			philo->philo_is_full = 1;
-			printf("%d is full\n", philo->id);
 			pthread_mutex_unlock(&philo->m_full);
 		}
 	}
@@ -41,12 +40,12 @@ void is_eating(t_philo *philo)
 				pthread_mutex_lock(&philo->m_fork);
 				pthread_mutex_lock(&philo->first->m_fork);
 				if(*philo->is_died == 0)
-					print_action("has taken a fork", current_timestamp(), philo->id);
+					print_action("has taken a fork", current_timestamp(), philo);
 				if(*philo->is_died == 0)
-					print_action("has taken a fork", current_timestamp(), philo->id);
+					print_action("has taken a fork", current_timestamp(), philo);
 				philo->last_eat = current_timestamp();
 				if(*philo->is_died == 0)
-					print_action("is eating", philo->last_eat, philo->id);
+					print_action("is eating", philo->last_eat, philo);
 				if(*philo->is_died == 0)
 					check_eat(philo);
 				usleep(philo->time_to_eat * 1000);
@@ -61,12 +60,12 @@ void is_eating(t_philo *philo)
 				pthread_mutex_lock(&philo->m_fork);
 				pthread_mutex_lock(&philo->right->m_fork);
 				if(*philo->is_died == 0)
-					print_action("has taken a fork", current_timestamp(), philo->id);
+					print_action("has taken a fork", current_timestamp(), philo);
 				if(*philo->is_died == 0)
-					print_action("has taken a fork", current_timestamp(), philo->id);
+					print_action("has taken a fork", current_timestamp(), philo);
 				philo->last_eat = current_timestamp();
 				if(*philo->is_died == 0)
-					print_action("is eating", philo->last_eat, philo->id);
+					print_action("is eating", philo->last_eat, philo);
 				if(*philo->is_died == 0)
 					check_eat(philo);
 				usleep(philo->time_to_eat * 1000);
