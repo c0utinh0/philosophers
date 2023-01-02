@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 15:41:48 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 15:58:55 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,27 @@ void	*thread_simulation(void *temp)
 	{
 		while (*(philo)->is_died == 0)
 		{
+			pthread_mutex_lock(&(*philo->m_died));
 			if (*philo->is_died == 0)
+			{
+				pthread_mutex_unlock(&(*philo->m_died));
 				is_eating(philo);
+			}
+			pthread_mutex_unlock(&(*philo->m_died));
+			pthread_mutex_lock(&(*philo->m_died));
 			if (*philo->is_died == 0)
+			{
+				pthread_mutex_unlock(&(*philo->m_died));
 				is_sleeping(philo);
+			}
+			pthread_mutex_unlock(&(*philo->m_died));
+			pthread_mutex_lock(&(*philo->m_died));
 			if (*philo->is_died == 0)
+			{
+				pthread_mutex_unlock(&(*philo->m_died));
 				is_thinking(philo);
+			}
+			pthread_mutex_unlock(&(*philo->m_died));
 		}
 	}
 	return (NULL);
