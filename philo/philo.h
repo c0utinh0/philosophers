@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 14:37:09 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 15:31:20 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_simulation
 	int				is_full;
 	int				s_argc;
 	char			**s_argv;
+	pthread_mutex_t	m_died;
 }	t_simulation;
 
 typedef struct s_philo
@@ -36,6 +37,7 @@ typedef struct s_philo
 	pthread_t		t_monitor;
 	pthread_mutex_t	m_fork;
 	pthread_mutex_t	m_full;
+	pthread_mutex_t	*m_died;
 	struct s_philo	*first;
 	struct s_philo	*right;
 	struct s_philo	*left;

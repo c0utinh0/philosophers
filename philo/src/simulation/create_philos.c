@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 14:37:56 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 15:35:44 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	init_philo_struct(t_philo *new, int id, t_simulation *simulation)
 	new->philo_is_full = 0;
 	pthread_mutex_init(&new->m_fork, NULL);
 	pthread_mutex_init(&new->m_full, NULL);
+	new->m_died = &simulation->m_died;
 }
 
 static void	add_philo_list(t_philo **list, int id, t_simulation *simulation)
@@ -73,6 +74,7 @@ void	create_philos(char **argv, int argc, t_simulation **simulation,
 	int		count_philo;
 	t_philo	*philos;
 
+	pthread_mutex_init(&(*simulation)->m_died, NULL);
 	philos = *philo;
 	(*simulation)->s_argc = argc;
 	(*simulation)->s_argv = argv;
