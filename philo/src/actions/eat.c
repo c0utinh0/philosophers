@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:53:14 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 16:45:28 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:26:18 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ static void	check_eat(t_philo *philo)
 
 static void	last_philo(t_philo *philo)
 {
-	if (*philo->is_died == 0)
+	if (check_is_died(philo))
 	{
 		pthread_mutex_lock(&philo->m_fork);
 		pthread_mutex_lock(&philo->first->m_fork);
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			print_action("has taken a fork", philo);
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			print_action("has taken a fork", philo);
 		philo->last_eat = current_timestamp();
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			print_action("is eating", philo);
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			check_eat(philo);
 		usleep(philo->time_to_eat * 1000);
 	}
@@ -53,18 +53,18 @@ static void	last_philo(t_philo *philo)
 
 static void	normal_philo(t_philo *philo)
 {
-	if (*philo->is_died == 0)
+	if (check_is_died(philo))
 	{
 		pthread_mutex_lock(&philo->m_fork);
 		pthread_mutex_lock(&philo->right->m_fork);
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			print_action("has taken a fork", philo);
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			print_action("has taken a fork", philo);
 		philo->last_eat = current_timestamp();
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			print_action("is eating", philo);
-		if (*philo->is_died == 0)
+		if (check_is_died(philo))
 			check_eat(philo);
 		usleep(philo->time_to_eat * 1000);
 	}

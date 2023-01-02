@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 15:31:20 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:22:59 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void		is_thinking(t_philo *philo);
 void		is_sleeping(t_philo *philo);
 void		print_action(char *msg, t_philo *philo);
 void		stop_simulation(t_simulation **simulation);
+int			check_is_died(t_philo *philo);
 
 #endif

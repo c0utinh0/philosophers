@@ -6,7 +6,7 @@
 #    By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:40 by dcoutinh          #+#    #+#              #
-#    Updated: 2023/01/02 14:33:21 by dcoutinh         ###   ########.fr        #
+#    Updated: 2023/01/02 16:23:24 by dcoutinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =  philo.c	\
 		src/utils/time_functions.c	\
 		src/utils/print_functions.c	\
 		src/utils/error_functions.c	\
+		src/utils/check_is_died.c	\
 		src/actions/eat.c	\
 		src/actions/think.c	\
 		src/actions/sleep.c	\
