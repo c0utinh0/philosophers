@@ -6,11 +6,11 @@
 #    By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:40 by dcoutinh          #+#    #+#              #
-#    Updated: 2022/12/20 13:58:09 by dcoutinh         ###   ########.fr        #
+#    Updated: 2023/01/02 14:33:21 by dcoutinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc ## alterar
+CC = cc
 
 NAME = philo
 
