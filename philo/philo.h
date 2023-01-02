@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:59 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 16:43:13 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:37:09 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ long int	ft_atoi_check(const char *nptr);
 int			ft_isdigit(int c);
 size_t		ft_strlen(const char *s);
 int			check_args(int argc, char **argv);
-void		create_philos(char **argv, int argc, t_simulation **simulation);
+void		create_philos(char **argv, int argc, t_simulation **simulation,
+				t_philo **philo);
 void		threads(t_simulation **simulation);
 void		*thread_simulation(void *temp);
 void		*thread_monitor(void *temp);
