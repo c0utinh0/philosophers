@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 15:58:55 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:49:14 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	one_philo_simulation(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->m_fork);
-	if (*philo->is_died == 0)
+	if (check_is_died(philo))
 		print_action("has taken a fork", philo);
 	philo->last_eat = current_timestamp();
 	usleep(philo->time_to_eat * 1000);
@@ -33,26 +33,14 @@ void	*thread_simulation(void *temp)
 		one_philo_simulation(philo);
 	else
 	{
-		while (*(philo)->is_died == 0)
+		while (check_is_died(philo))
 		{
-			pthread_mutex_lock(&(*philo->m_died));
-			if (*philo->is_died == 0)
-			{
-				pthread_mutex_unlock(&(*philo->m_died));
+			if (check_is_died(philo))
 				is_eating(philo);
-			}
-			pthread_mutex_unlock(&(*philo->m_died));
-			pthread_mutex_lock(&(*philo->m_died));
-			if (*philo->is_died == 0)
-			{
-				pthread_mutex_unlock(&(*philo->m_died));
+			if (check_is_died(philo))
 				is_sleeping(philo);
-			}
-			pthread_mutex_unlock(&(*philo->m_died));
-			pthread_mutex_lock(&(*philo->m_died));
 			if (*philo->is_died == 0)
 			{
-				pthread_mutex_unlock(&(*philo->m_died));
 				is_thinking(philo);
 			}
 			pthread_mutex_unlock(&(*philo->m_died));

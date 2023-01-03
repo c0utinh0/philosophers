@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 10:28:06 by dcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/20 14:57:26 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:53:34 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	destroy_mutex(t_simulation **simulation)
 		pthread_mutex_destroy(&philo->m_full);
 		philo = philo->right;
 	}
+	pthread_mutex_destroy(&(*simulation)->m_died);
+
 }
 
 void	stop_simulation(t_simulation **simulation)
