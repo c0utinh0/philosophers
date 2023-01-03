@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 16:17:48 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 16:30:19 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/02 21:12:18 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ int	check_is_died(t_philo *philo)
 		return (0);
 	}
 }
-
