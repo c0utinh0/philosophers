@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:53:14 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 16:26:18 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:33:18 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static void	last_philo(t_philo *philo)
 			check_eat(philo);
 		usleep(philo->time_to_eat * 1000);
 	}
-	pthread_mutex_unlock(&philo->m_fork);
 	pthread_mutex_unlock(&philo->first->m_fork);
+	pthread_mutex_unlock(&philo->m_fork);
 }
 
 static void	normal_philo(t_philo *philo)
@@ -68,8 +68,8 @@ static void	normal_philo(t_philo *philo)
 			check_eat(philo);
 		usleep(philo->time_to_eat * 1000);
 	}
-	pthread_mutex_unlock(&philo->m_fork);
 	pthread_mutex_unlock(&philo->right->m_fork);
+	pthread_mutex_unlock(&philo->m_fork);
 }
 
 void	is_eating(t_philo *philo)
