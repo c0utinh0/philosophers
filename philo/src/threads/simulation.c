@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/05 16:24:22 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:03:05 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*thread_simulation(void *temp)
 
 	philo = (t_philo *)temp;
 	if (philo->id % 2 == 0)
-		usleep(200);
+		usleep(100);
 	if (philo->nop == 1)
 		one_philo_simulation(philo);
 	else
@@ -39,11 +39,8 @@ void	*thread_simulation(void *temp)
 				is_eating(philo);
 			if (check_is_died(philo))
 				is_sleeping(philo);
-			if (*philo->is_died == 0)
-			{
+			if (check_is_died(philo))
 				is_thinking(philo);
-			}
-//			pthread_mutex_unlock(&(*philo->m_died));
 		}
 	}
 	return (NULL);
