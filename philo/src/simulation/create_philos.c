@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:47:35 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 15:35:44 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/05 18:42:21 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	init_philo_struct(t_philo *new, int id, t_simulation *simulation)
 	pthread_mutex_init(&new->m_fork, NULL);
 	pthread_mutex_init(&new->m_full, NULL);
 	new->m_died = &simulation->m_died;
+	new->m_print = &simulation->m_print;
 }
 
 static void	add_philo_list(t_philo **list, int id, t_simulation *simulation)
@@ -51,8 +52,6 @@ static void	add_philo_list(t_philo **list, int id, t_simulation *simulation)
 			(*list)->left = new;
 		*list = new;
 	}
-	else
-		printf("Memory Allocation Error!\n");
 }
 
 static void	create_first(t_philo **philos)
@@ -75,6 +74,7 @@ void	create_philos(char **argv, int argc, t_simulation **simulation,
 	t_philo	*philos;
 
 	pthread_mutex_init(&(*simulation)->m_died, NULL);
+	pthread_mutex_init(&(*simulation)->m_print, NULL);
 	philos = *philo;
 	(*simulation)->s_argc = argc;
 	(*simulation)->s_argv = argv;

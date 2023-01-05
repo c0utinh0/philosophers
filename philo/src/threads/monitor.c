@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/05 16:28:35 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/05 18:45:42 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	*thread_monitor(void *temp)
 		else if ((current_timestamp() - philo->last_eat) > philo->time_to_die)
 		{
 			*(philo)->is_died = 1;
+			pthread_mutex_lock(&(*philo->m_print));
 			printf(" %lldms %d %s\n", interval_timestamp(philo->is_born),
 				philo->id, "is died");
+			pthread_mutex_unlock(&(*philo->m_print));
 			pthread_mutex_unlock(&(*philo->m_died));
 			break ;
 		}
@@ -39,6 +41,7 @@ void	*thread_monitor(void *temp)
 			philo = philo->first;
 		else if (philo->right != NULL && check_is_died(philo))
 			philo = philo->right;
+		usleep(100);
 	}
 	return (NULL);
 }
