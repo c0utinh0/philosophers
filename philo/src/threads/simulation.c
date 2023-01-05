@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:43:26 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/02 20:49:14 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:24:22 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	*thread_simulation(void *temp)
 			{
 				is_thinking(philo);
 			}
-			pthread_mutex_unlock(&(*philo->m_died));
+//			pthread_mutex_unlock(&(*philo->m_died));
 		}
 	}
 	return (NULL);
