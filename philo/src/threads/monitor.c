@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:40:16 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/05 19:09:13 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:08:47 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*thread_monitor(void *temp)
 	while (philo != NULL)
 	{
 		pthread_mutex_lock(&(*philo->m_died));
-		if (*(philo)->is_full == philo->nop)
+		if (*(philo)->is_full >= philo->nop)
 		{
 			*(philo)->is_died = 1;
 			pthread_mutex_unlock(&(*philo->m_died));

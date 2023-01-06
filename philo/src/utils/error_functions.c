@@ -6,7 +6,7 @@
 /*   By: dcoutinh <dcoutinh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:37:18 by dcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/05 19:53:46 by dcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:10:08 by dcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	check_args(int argc, char **argv)
 			if (num <= 0 || num > 2147483647)
 				return (0);
 		}
-		return(1);
+		return (1);
 	}
 	else
 		return (0);
